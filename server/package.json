@@ -1,0 +1,39 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "dotenv -e .env.development -- nodemon --quiet --exec babel-node src/index.js --ext js,json,graphql",
+    "build": "babel ./src --out-dir build --copy-files && cp package.json ./build/package.json && cp yarn.lock ./build/yarn.lock",
+    "build:start": "node ./index.js",
+    "test": "npm run test:lint && npm run test:unit",
+    "test:lint": "eslint . --quiet -c ./.eslintrc.js",
+    "test:unit": "jest --ci --passWithNoTests"
+  },
+  "dependencies": {
+    "apollo-server": "^2.6.3",
+    "chalk": "^2.4.2",
+    "graphql": "^14.3.1",
+    "graphql-type-json": "^0.3.0",
+    "merge-graphql-schemas": "^1.5.8"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "babel-plugin-root-import": "^6.2.0",
+    "dotenv-cli": "^2.0.0",
+    "eslint": "5.3.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-import-resolver-babel-plugin-root-import": "^1.1.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1"
+  }
+}
